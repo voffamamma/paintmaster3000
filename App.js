@@ -99,6 +99,21 @@ $(function() {
 	$('#squarebutton').click(function(){app.shapeFactory = function() {
 		return new Square();
 	};});
+	$('#circlebutton').click(function(){app.shapeFactory = function() {
+		return new Circle();
+	};});
+
+	$('#linebutton').click(function(){app.shapeFactory = function() {
+		return new Line();
+	};});
+
+	$('#penbutton').click(function(){app.shapeFactory = function() {
+		return new Pen();
+	};});
+	$('#textbutton').click(function(){app.shapeFactory = function() {
+		return new Text;
+	};});
+	
 	$('#clearbutton').click(function(){app.clear()});
 	$('#color').change(function(){app.setColor($(this).val())});
 });
