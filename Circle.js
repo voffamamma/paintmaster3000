@@ -1,18 +1,22 @@
 var Circle = Shape.extend({
 
-	constructor: function() {
+	constructor: function(){
 		this.base("Circle");
+		this.radius = 0;		
 	},
 
 	draw: function(canvas) {
 		canvas.strokeStyle = this.color;
-		canvas.strokeRect(this.pos.x, this.pos.y, this.size.x, this.size.y);
+		canvas.lineWidth = this.lineWidth;
+		canvas.beginPath();
+		canvas.arc(this.pos.x, this.pos.y, this.radius, 2*Math.PI, false);
+		canvas.stroke();
+		canvas.closePath();
 		this.base(canvas);
 	},
 
 	drawing:function(point) {
-		this.size.x = point.x - this.pos.x;
-		this.size.y = point.y - this.pos.y;
+		this.radius = Math.sqrt(Math.pow(point.x - this.pos.x, 2) + Math.pow(point.y - this.pos.y, 2));
 	},
 
 	added: function(canvas) {
@@ -27,4 +31,4 @@ var Circle = Shape.extend({
 		}
 	},	
 
-});
+})
